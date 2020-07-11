@@ -6,8 +6,6 @@ allSheetNames = theFile.sheetnames
 instrumentModel = '2360/43-93'
 instrumentId = '227413/PR295918'
 
-
-
 print("All sheet names {} " .format(theFile.sheetnames))
 
 def find_instrument_model_cell(currentSheet):
@@ -18,22 +16,25 @@ def find_instrument_model_cell(currentSheet):
                 #print("{1} cell is located on {0}" .format(cell_name, currentSheet[cell_name].value))
                 #print("cell position {} has value {}".format(cell_name, currentSheet[cell_name].value))
                 print("the row is {0} and the column {1}" .format(cell_name[1], cell_name[0]))
-
                 return cell_name
 
 def find_instrument_sn_cell(instModelCell):
 
-    refRow = instModelCell[1]
-    refCol = instModelCell[2]
+    refRow = str(int(instModelCell[1]) + 1)
+    refCol = instModelCell[0]
 
-
-
+    print('xxxxxxxxxxx')
+    print(refRow)
+    print(refCol)
+    print(currentSheet[refCol + refRow].value)
 
 
 for x in allSheetNames:
     print("Current sheet name is {}" .format(x))
     currentSheet = theFile[x]
     instModelCell = find_instrument_model_cell(currentSheet)
+    if instModelCell is None:
+        continue
     instSNcell = find_instrument_sn_cell(instModelCell)
 
 
