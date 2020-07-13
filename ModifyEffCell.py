@@ -28,9 +28,9 @@ def find_instrument_model_cell(currentSheet):
                 return modelCell
 
 
-def find_instrument_sn_cell(instModelCell):
-    snRow = str(int(instModelCell[1]) + 1)
-    snCol = instModelCell[0]
+def find_instrument_sn_cell(modelCell):
+    snRow = str(int(modelCell[1]) + 1)
+    snCol = modelCell[0]
     snCell = currentSheet[snCol + snRow]
 
     print('xxxxxxxxxxx')
@@ -41,9 +41,9 @@ def find_instrument_sn_cell(instModelCell):
     return snCell
 
 
-def find_instrument_efficiency(instModelCell):
-    effRow = str(int(instModelCell[1]) + 3)
-    effCol = chr(ord(instModelCell[0]) + 3)
+def find_instrument_efficiency(modelCell):
+    effRow = str(int(modelCell[1]) + 3)
+    effCol = chr(ord(modelCell[0]) + 3)
     effCell = currentSheet[effCol + effRow]
 
     print(effCell.value)
