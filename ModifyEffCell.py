@@ -48,3 +48,22 @@ for x in allSheetNames:
 
 theFile.close()
 theFile.save('characterization.xlsx')
+
+"""
+Purpose: This function is used to create a list of all files within a designated folder and then return the list. The 
+            origin folder must be within the same folder as the program.
+Parameter(s): The parameter is a folder name/folder path from the current directory of the program.
+Return: Returns a list of all file names, including file path, within the folder as well as all subdirectories.
+
+def getListOfFiles(dirName):
+    listOfFile = os.listdir(dirName)
+    allFiles = list()
+    for file in listOfFile:
+        fullPath = os.path.join(dirName, file)
+        if os.path.isdir(fullPath):
+            allFiles = allFiles + getListOfFiles(fullPath)
+        else:
+            allFiles.append(fullPath)
+    print(allFiles)
+    return allFiles
+"""
