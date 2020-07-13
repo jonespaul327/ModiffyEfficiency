@@ -1,12 +1,18 @@
 import openpyxl
+import json
+import os
 
-theFile = openpyxl.load_workbook('characterization.xlsx')
-allSheetNames = theFile.sheetnames
-
-instrumentModel = '2360/43-93'
-instrumentId = '227413/PR295918'
-
-print("All sheet names {} " .format(theFile.sheetnames))
+def getListOfFiles(dirName):
+    listOfFile = os.listdir(dirName)
+    allFiles = list()
+    for file in listOfFile:
+        fullPath = os.path.join(dirName, file)
+        if os.path.isdir(fullPath):
+            allFiles = allFiles + getListOfFiles(fullPath)
+        else:
+            allFiles.append(fullPath)
+    print(allFiles)
+    return allFiles
 
 def find_instrument_model_cell(currentSheet):
     for row in range(1, 50):
@@ -19,13 +25,16 @@ def find_instrument_model_cell(currentSheet):
                 return cell_name
 
 def find_instrument_sn_cell(instModelCell):
-    refRow = str(int(instModelCell[1]) + 1)
-    refCol = instModelCell[0]
+    snRow = str(int(instModelCell[1]) + 1)
+    snCol = instModelCell[0]
+    snCell = currentSheet[snCol + snRow]
 
     print('xxxxxxxxxxx')
-    print(refRow)
-    print(refCol)
-    print(currentSheet[refCol + refRow].value)
+    print(snRow)
+    print(snCol)
+    print(snCell.value)
+
+    return snCell
 
 
 def find_instrument_efficiency(instModelCell):
@@ -37,28 +46,56 @@ def find_instrument_efficiency(instModelCell):
     print(effRow)
     print(effCol)
 
-    effCell.value = 0.5
+    return effCell
+
+def modify_efficiency(instSNcell, instEfficiencyCell):
+    for inst in instrumentsData:
+        if inst['sn'] == instSNcell.value:
+            instEfficiencyCell.value = inst['betaEfficiency']
+            return inst['sn']
 
 
-for x in allSheetNames:
-    print("Current sheet name is {}" .format(x))
-    currentSheet = theFile[x]
-    instModelCell = find_instrument_model_cell(currentSheet)
-    if instModelCell is None:
-        continue
-    instSNcell = find_instrument_sn_cell(instModelCell)
-    instEfficiency = find_instrument_efficiency(instModelCell)
+instrumentModel = '2360/43-93'
+#instrumentId = '227413/PR295918'
 
-    #print(currentSheet['L8'].value)
+filesWithNoSN = list()
 
-    # if currentSheet['L8'].value == instrumentId:
-    #     currentSheet['N10'].value = 0.152
+files = getListOfFiles('surveys')
+
+with open('package.json') as instruments_file:
+    instrumentsData = json.load(instruments_file)
+
+for file in files:
+    theFile = openpyxl.load_workbook(file)
+    allSheetNames = theFile.sheetnames
+
+    print("All sheet names {} ".format(theFile.sheetnames))
+
+    for x in allSheetNames:
+        print("Current sheet name is {}" .format(x))
+        currentSheet = theFile[x]
+        instModelCell = find_instrument_model_cell(currentSheet)
+        if instModelCell is None:
+            continue
+        instSNcell = find_instrument_sn_cell(instModelCell)
+        instEfficiencyCell = find_instrument_efficiency(instModelCell)
+        serialNumber = modify_efficiency(instSNcell, instEfficiencyCell)
+
+        if serialNumber is None:
+            filesWithNoSN.append(file)
+
+        #print(currentSheet['L8'].value)
+
+        # if currentSheet['L8'].value == instrumentId:
+        #     currentSheet['N10'].value = 0.152
+
+    theFile.close()
+    theFile.save(file)
+
+print("The files with no s/n are {}".format(filesWithNoSN))
 
 
 
-
-theFile.close()
-theFile.save('characterization.xlsx')
 
 """
 Purpose: This function is used to create a list of all files within a designated folder and then return the list. The 
