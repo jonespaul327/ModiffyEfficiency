@@ -1,24 +1,46 @@
 {
-  "sn": "234860/PR289402",
-  "CalDueDate": "6/18/2020",
-  "Efficiency":"20.93%"
-
-},
-{
-  "sn": "227413/PR295918",
-  "CalDueDate": "",
-  "Efficiency":
-
-},
-{
-  "sn": "234860/"PR289402",
-  "CalDueDate": ,
-  "Efficiency":
-
-},
-{
-  "sn": "234860/"PR289402",
-  "CalDueDate": ,
-  "Efficiency":
-
-},
+  "2360s" : [
+    {
+      "sn": "234860/PR289402",
+      "alphaCalDueDate": "6/18/2020",
+      "alphaEfficiency": "20.93%",
+      "betaCalDueDate": "6/18/2020",
+      "betaEfficiency": "33.78%"
+    },
+    {
+      "sn": "227413/PR295918",
+      "alphaCalDueDate": "8/15/2020",
+      "alphaEfficiency": "21.12%",
+      "betaCalDueDate": "8/15/2020",
+      "betaEfficiency": "31.20%"
+    },
+    {
+      "sn": "184905/PR289400",
+      "alphaCalDueDate": "2/19/2021",
+      "alphaEfficiency": "19.78",
+      "betaCalDueDate": "2/19/2021",
+      "betaEfficiency": "31.77%"
+    },
+    {
+      "sn": "170550/PR312880",
+      "alphaCalDueDate": "5/18/2021",
+      "alphaEfficiency": "19.25%",
+      "betaCalDueDate": "5/18/2021",
+      "betaEfficiency": "27.36%"
+    },
+    {
+      "sn": "259730/PR374384",
+      "alphaCalDueDate": "3/11/2021",
+      "alphaEfficiency": "19.31%",
+      "betaCalDueDate": "3/11/2021",
+      "betaEfficiency": "36.57%"
+    },
+    {
+      "sn": "164693/PR389073",
+      "alphaCalDueDate": "3/11/2021",
+      "alphaEfficiency": "19.31%",
+      "betaCalDueDate": "3/11/2021",
+      "betaEfficiency": "36.57%"
+    }
+  ]
+}
