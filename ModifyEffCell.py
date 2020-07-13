@@ -19,7 +19,6 @@ def find_instrument_model_cell(currentSheet):
                 return cell_name
 
 def find_instrument_sn_cell(instModelCell):
-
     refRow = str(int(instModelCell[1]) + 1)
     refCol = instModelCell[0]
 
@@ -29,6 +28,18 @@ def find_instrument_sn_cell(instModelCell):
     print(currentSheet[refCol + refRow].value)
 
 
+def find_instrument_efficiency(instModelCell):
+    effRow = str(int(instModelCell[1]) + 3)
+    effCol = chr(ord(instModelCell[0]) + 2)
+    effCell = currentSheet[effCol + effRow]
+
+    print(effCell.value)
+    print(effRow)
+    print(effCol)
+
+    effCell.value = 0.5
+
+
 for x in allSheetNames:
     print("Current sheet name is {}" .format(x))
     currentSheet = theFile[x]
@@ -36,7 +47,7 @@ for x in allSheetNames:
     if instModelCell is None:
         continue
     instSNcell = find_instrument_sn_cell(instModelCell)
-
+    instEfficiency = find_instrument_efficiency(instModelCell)
 
     #print(currentSheet['L8'].value)
 
