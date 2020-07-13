@@ -95,6 +95,54 @@
       "CalDueDate": "12/18/2020",
       "alphaEfficiency": "20.04%",
       "betaEfficiency": "35.40%"
+    },
+    {
+      "sn": "287606/PR389075",
+      "CalDueDate": "12/2/2020",
+      "alphaEfficiency": "22.00%",
+      "betaEfficiency": "34.70%"
+    },
+    {
+      "sn": "227401/PR312929",
+      "CalDueDate": "12/18/2020",
+      "alphaEfficiency": "20.04%",
+      "betaEfficiency": "34.06%"
+    },
+    {
+      "sn": "164689/PR389073",
+      "CalDueDate": "12/2/2020",
+      "alphaEfficiency": "22.45%",
+      "betaEfficiency": "35.89%"
+    },
+    {
+      "sn": "227427/PR244535",
+      "CalDueDate": "5/23/2020",
+      "alphaEfficiency": "19.55%",
+      "betaEfficiency": "31.05%"
+    },
+    {
+      "sn": "268477/PR289427",
+      "CalDueDate": "9/10/2020",
+      "alphaEfficiency": "22.58%",
+      "betaEfficiency": "35.71%"
+    },
+    {
+      "sn": "268470/PR389083",
+      "CalDueDate": "11/27/2020",
+      "alphaEfficiency": "21.87%",
+      "betaEfficiency": "31.87%"
+    },
+    {
+      "sn": "223250/PR236961",
+      "CalDueDate": "1/31/2020",
+      "alphaEfficiency": "20.84%",
+      "betaEfficiency": "33.70%"
+    },
+    {
+      "sn": "227404/PR389087",
+      "CalDueDate": "2/20/2021",
+      "alphaEfficiency": "21.83%",
+      "betaEfficiency": "36.02%"
     }
   ]
 }
