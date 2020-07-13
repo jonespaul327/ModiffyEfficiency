@@ -14,6 +14,7 @@ def getListOfFiles(dirName):
     print(allFiles)
     return allFiles
 
+
 def find_instrument_model_cell(currentSheet):
     for row in range(1, 50):
         for column in "ABCDEFGHIJKLMNOPQRSTUV":  # Here you can add or reduce the columns
@@ -23,6 +24,7 @@ def find_instrument_model_cell(currentSheet):
                 #print("cell position {} has value {}".format(cell_name, currentSheet[cell_name].value))
                 print("the row is {0} and the column {1}" .format(cell_name[1], cell_name[0]))
                 return cell_name
+
 
 def find_instrument_sn_cell(instModelCell):
     snRow = str(int(instModelCell[1]) + 1)
@@ -47,6 +49,7 @@ def find_instrument_efficiency(instModelCell):
     print(effCol)
 
     return effCell
+
 
 def modify_efficiency(instSNcell, instEfficiencyCell):
     for inst in instrumentsData:
@@ -93,25 +96,3 @@ for file in files:
     theFile.save(file)
 
 print("The files with no s/n are {}".format(filesWithNoSN))
-
-
-
-
-"""
-Purpose: This function is used to create a list of all files within a designated folder and then return the list. The 
-            origin folder must be within the same folder as the program.
-Parameter(s): The parameter is a folder name/folder path from the current directory of the program.
-Return: Returns a list of all file names, including file path, within the folder as well as all subdirectories.
-
-def getListOfFiles(dirName):
-    listOfFile = os.listdir(dirName)
-    allFiles = list()
-    for file in listOfFile:
-        fullPath = os.path.join(dirName, file)
-        if os.path.isdir(fullPath):
-            allFiles = allFiles + getListOfFiles(fullPath)
-        else:
-            allFiles.append(fullPath)
-    print(allFiles)
-    return allFiles
-"""
